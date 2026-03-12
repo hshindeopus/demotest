@@ -1,0 +1,659 @@
+Started by user Harish Shinde
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/caches/git-f3d5c9624992ed1a4a9024abdfe71894/.git # timeout=10
+Setting origin to https://github.com/opus-devops/opus-iac
+ > git config remote.origin.url https://github.com/opus-devops/opus-iac # timeout=10
+Fetching origin...
+Fetching upstream changes from origin
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git config --get remote.origin.url # timeout=10
+using GIT_ASKPASS to set credentials 
+ > git fetch --no-tags --force --progress -- origin +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/master
+Seen branch in repository origin/opus-0001
+Seen branch in repository origin/opus-002
+Seen branch in repository origin/opus-VaishLB
+Seen branch in repository origin/opus-ci
+Seen branch in repository origin/opus-ci_hs
+Seen branch in repository origin/opus-swetaDb
+Seen branch in repository origin/opus_ci_hs
+Seen 8 remote branches
+Obtained Jenkinsfile from 07bd3c8f011524e806c2a628e218d24dd476560f
+[Pipeline] Start of Pipeline
+[Pipeline] library
+Loading library IAC@jenkins_hs
+Attempting to resolve jenkins_hs from remote references...
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+using GIT_ASKPASS to set credentials 
+ > git ls-remote -h -- https://github.com/opus-devops/jenkins-groovy.git # timeout=10
+Found match: refs/heads/jenkins_hs revision 03dca494fd864553b9ea5a66e7e69d382e29f6b1
+The recommended git tool is: NONE
+using credential github_jenkins_token
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/IAC_opus-ci_hs@libs/27f69c3172db0b93e1cc227c51dcd7ddaea5e35162dbaae482529625c13d9b96/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/opus-devops/jenkins-groovy.git # timeout=10
+Fetching without tags
+Fetching upstream changes from https://github.com/opus-devops/jenkins-groovy.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+using GIT_ASKPASS to set credentials 
+ > git fetch --no-tags --force --progress -- https://github.com/opus-devops/jenkins-groovy.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision 03dca494fd864553b9ea5a66e7e69d382e29f6b1 (jenkins_hs)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 03dca494fd864553b9ea5a66e7e69d382e29f6b1 # timeout=10
+Commit message: "Update executeAnsiblePlaybook.groovy"
+ > git rev-list --no-walk 13306ca21c3e2dce2f3de4a0d1c0566f94ca90ad # timeout=10
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/IAC_opus-ci_hs
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github_jenkins_token
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/IAC_opus-ci_hs/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/opus-devops/opus-iac # timeout=10
+Fetching without tags
+Fetching upstream changes from https://github.com/opus-devops/opus-iac
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+using GIT_ASKPASS to set credentials 
+ > git fetch --no-tags --force --progress -- https://github.com/opus-devops/opus-iac +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision 07bd3c8f011524e806c2a628e218d24dd476560f (opus-ci_hs)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 07bd3c8f011524e806c2a628e218d24dd476560f # timeout=10
+Commit message: "Update Jenkinsfile"
+ > git rev-list --no-walk 61eb1ad2c5842f2d7cee61765b72730ffd3dc4a0 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Initalize)
+[Pipeline] readJSON
+[Pipeline] properties
+[Pipeline] sh
++ rm -rf /var/lib/jenkins/workspace/IAC_opus-ci_hs/sshkey/known_hosts
+[Pipeline] sh
++ mkdir -p /var/lib/jenkins/workspace/IAC_opus-ci_hs/sshkey
++ chmod 700 /var/lib/jenkins/workspace/IAC_opus-ci_hs/sshkey
++ ssh-keygen -q -t rsa -N '' -f /var/lib/jenkins/workspace/IAC_opus-ci_hs/sshkey/ansible-ssh-tempkey -C jenkins
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/IAC_opus-ci_hs
+[Pipeline] {
+[Pipeline] echo
+Cleaning Workspace.. 
+[Pipeline] sh
++ rm -rf /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp /var/lib/jenkins/workspace/IAC_opus-ci_hs/logs /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform
+[Pipeline] echo
+Configuring Workspace.. 
+[Pipeline] sh
++ mkdir -p /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] withCredentials
+Masking supported pattern matches of $GIT_PASS
+[Pipeline] {
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ git ls-remote https://kiranpatil-opus:****@github.com/opus-devops/infra-codebase.git refs/heads/infra_codebase_hs
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ git clone --branch infra_codebase_hs --depth 1 https://kiranpatil-opus:****@github.com/opus-devops/infra-codebase.git .
+Cloning into '.'...
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] echo
+INFRASTRUCTURE_GIT_COMMIT: 86e31fad93699d109f968a4ad14e90d7d824ed6e
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/IAC_opus-ci_hs
+[Pipeline] {
+[Pipeline] sh
++ mkdir -p /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible
++ mkdir -p /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform
++ cp -r /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp/ansible/inventory /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/
++ cp -r /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp/ansible/roles /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/
++ cp -r /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp/ansible/playbooks/compute_linux.yml /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp/ansible/playbooks/pb-bucket.yml /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp/ansible/playbooks/pb-gke_cluster.yml /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/
++ cp -r /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp/terraform/components /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp/terraform/modules /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform
+[Pipeline] sh
++ mkdir -p /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible
+[Pipeline] sh
++ mkdir -p /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/ssh
+[Pipeline] writeFile
+[Pipeline] sh
++ find /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/inventory -type f -name '*.gcp.yml' -exec sed -i 's/{{GCP_PROJECT}}/opus-devops-accelerator/g' '{}' ';'
++ find /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/inventory -type f -name '*.gcp.yml' -exec sed -i 's/{{IAC_ID}}/iac-opus-ci_hs/g' '{}' ';'
++ rm -f /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/inventory/group_vars/_compute_dynamic.yml
+[Pipeline] sh
+++ find /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components -mindepth 1 -maxdepth 1 -type d -not -name _common_tfvars
++ for dir in $(find ${WORKSPACE}/terraform/components -mindepth 1 -maxdepth 1 -type d -not -name "_common_tfvars")
++ echo '[INFO] Processing /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/bucket'
+[INFO] Processing /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/bucket
++ '[' -f /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/bucket/provider.tf ']'
++ echo '[INFO] provider.tf found → skipping commom-provider.tf'
+[INFO] provider.tf found → skipping commom-provider.tf
++ for tf in ${WORKSPACE}/terraform/components/_common_tfvars/*.tf
+++ basename /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-provider.tf
++ '[' common-provider.tf = commom-provider.tf ']'
++ cp /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-provider.tf /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/bucket/
++ for tf in ${WORKSPACE}/terraform/components/_common_tfvars/*.tf
+++ basename /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-variables.tf
++ '[' common-variables.tf = commom-provider.tf ']'
++ cp /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-variables.tf /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/bucket/
++ for dir in $(find ${WORKSPACE}/terraform/components -mindepth 1 -maxdepth 1 -type d -not -name "_common_tfvars")
++ echo '[INFO] Processing /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/compute_linux'
+[INFO] Processing /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/compute_linux
++ '[' -f /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/compute_linux/provider.tf ']'
++ echo '[INFO] No provider.tf found → copying all global tf files'
+[INFO] No provider.tf found → copying all global tf files
++ cp /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-provider.tf /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-variables.tf /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/compute_linux/
++ for dir in $(find ${WORKSPACE}/terraform/components -mindepth 1 -maxdepth 1 -type d -not -name "_common_tfvars")
++ echo '[INFO] Processing /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster'
+[INFO] Processing /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster
++ '[' -f /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/provider.tf ']'
++ echo '[INFO] No provider.tf found → copying all global tf files'
+[INFO] No provider.tf found → copying all global tf files
++ cp /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-provider.tf /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-variables.tf /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] echo
+Starting provision action: 'plan_apply'
+[Pipeline] echo
+Steps to execute: plan -> apply
+[Pipeline] echo
+Running step: plan
+[Pipeline] stage
+[Pipeline] { (Resource Provision: plan)
+[Pipeline] echo
+Executing step: plan
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $GCP_SERVICE_ACCOUNT_FILE or $GOOGLE_APPLICATION_CREDENTIALS or $CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE
+[Pipeline] {
+[Pipeline] echo
+Executing playbook: pb-gke_cluster.yml
+[Pipeline] sh
++ ansible-playbook -vvv pb-gke_cluster.yml --extra-vars 'resource_name=opus-gkeus-central1 tf_action=plan build_workspace=/var/lib/jenkins/workspace/IAC_opus-ci_hs project=opus-devops-accelerator region=us-central1 compute_image=rocky-linux-10-v20250912 iac_id=iac-opus-ci_hs'
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+ansible-playbook [core 2.19.2]
+  config file = /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/ansible.cfg
+  configured module search path = ['/var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/library', '/var/lib/jenkins/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/lib/python3.12/site-packages/ansible
+  ansible collection location = /var/lib/jenkins/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.12.12 (main, Feb 27 2026, 00:00:00) [GCC 11.5.0 20240719 (Red Hat 11.5.0-11)] (/usr/bin/python3.12)
+  jinja version = 3.1.6
+  pyyaml version = 6.0.2 (with libyaml v0.2.5)
+Using /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/ansible.cfg as config file
+host_list declined parsing /etc/ansible/hosts as it did not pass its verify_file() method
+Skipping due to inventory source not existing or not being readable by the current user
+script declined parsing /etc/ansible/hosts as it did not pass its verify_file() method
+auto declined parsing /etc/ansible/hosts as it did not pass its verify_file() method
+Skipping due to inventory source not existing or not being readable by the current user
+yaml declined parsing /etc/ansible/hosts as it did not pass its verify_file() method
+Skipping due to inventory source not existing or not being readable by the current user
+ini declined parsing /etc/ansible/hosts as it did not pass its verify_file() method
+Skipping due to inventory source not existing or not being readable by the current user
+toml declined parsing /etc/ansible/hosts as it did not pass its verify_file() method
+redirecting (type: callback) ansible.builtin.debug to ansible.posix.debug
+Skipping callback 'default', as we already have a stdout callback.
+Skipping callback 'minimal', as we already have a stdout callback.
+Skipping callback 'oneline', as we already have a stdout callback.
+
+PLAYBOOK: pb-gke_cluster.yml ***************************************************
+1 plays in pb-gke_cluster.yml
+
+PLAY [Playbook to handle GKE creation] *****************************************
+
+TASK [Gathering Facts] *********************************************************
+task path: /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/pb-gke_cluster.yml:1
+<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: jenkins
+<127.0.0.1> EXEC /bin/sh -c 'echo ~jenkins && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /var/lib/jenkins/.ansible/tmp `"&& mkdir "` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297725.2680264-2380-129940186098443 `" && echo ansible-tmp-1773297725.2680264-2380-129940186098443="` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297725.2680264-2380-129940186098443 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/setup.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmpy617tp78 TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297725.2680264-2380-129940186098443/AnsiballZ_setup.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297725.2680264-2380-129940186098443/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297725.2680264-2380-129940186098443/AnsiballZ_setup.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297725.2680264-2380-129940186098443/AnsiballZ_setup.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297725.2680264-2380-129940186098443/ > /dev/null 2>&1 && sleep 0'
+ok: [localhost]
+
+TASK [Call Terraform Role] *****************************************************
+task path: /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/pb-gke_cluster.yml:6
+included: terraform for localhost
+
+TASK [terraform : set_fact] ****************************************************
+task path: /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/roles/terraform/tasks/main.yml:3
+ok: [localhost] => {
+    "ansible_facts": {
+        "resources_dir": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1"
+    },
+    "changed": false
+}
+
+TASK [terraform : set_fact] ****************************************************
+task path: /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/roles/terraform/tasks/main.yml:6
+ok: [localhost] => {
+    "ansible_facts": {
+        "tf_workspace": "default"
+    },
+    "changed": false
+}
+
+TASK [terraform : check if sub directory is present] ***************************
+task path: /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/roles/terraform/tasks/main.yml:11
+<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: jenkins
+<127.0.0.1> EXEC /bin/sh -c 'echo ~jenkins && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /var/lib/jenkins/.ansible/tmp `"&& mkdir "` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297726.5894275-2433-222012069927289 `" && echo ansible-tmp-1773297726.5894275-2433-222012069927289="` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297726.5894275-2433-222012069927289 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/stat.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmp1cmfwlt8 TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297726.5894275-2433-222012069927289/AnsiballZ_stat.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297726.5894275-2433-222012069927289/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297726.5894275-2433-222012069927289/AnsiballZ_stat.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297726.5894275-2433-222012069927289/AnsiballZ_stat.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297726.5894275-2433-222012069927289/ > /dev/null 2>&1 && sleep 0'
+ok: [localhost] => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "checksum_algorithm": "sha1",
+            "follow": false,
+            "get_attributes": true,
+            "get_checksum": true,
+            "get_mime": true,
+            "path": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1"
+        }
+    },
+    "stat": {
+        "exists": false
+    }
+}
+
+TASK [terraform : delete if exists] ********************************************
+task path: /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/roles/terraform/tasks/main.yml:16
+skipping: [localhost] => {
+    "changed": false,
+    "false_condition": "dir.stat.exists is true",
+    "skip_reason": "Conditional result was False"
+}
+
+TASK [terraform : Create subfolder] ********************************************
+task path: /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/roles/terraform/tasks/main.yml:22
+<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: jenkins
+<127.0.0.1> EXEC /bin/sh -c 'echo ~jenkins && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /var/lib/jenkins/.ansible/tmp `"&& mkdir "` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.1028495-2451-213512944172685 `" && echo ansible-tmp-1773297727.1028495-2451-213512944172685="` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.1028495-2451-213512944172685 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/file.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmp46u98cj1 TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.1028495-2451-213512944172685/AnsiballZ_file.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.1028495-2451-213512944172685/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.1028495-2451-213512944172685/AnsiballZ_file.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.1028495-2451-213512944172685/AnsiballZ_file.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.1028495-2451-213512944172685/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => {
+    "changed": true,
+    "gid": 991,
+    "group": "jenkins",
+    "invocation": {
+        "module_args": {
+            "_diff_peek": null,
+            "_original_basename": null,
+            "access_time": null,
+            "access_time_format": "%Y%m%d%H%M.%S",
+            "attributes": null,
+            "follow": true,
+            "force": false,
+            "group": null,
+            "mode": "0755",
+            "modification_time": null,
+            "modification_time_format": "%Y%m%d%H%M.%S",
+            "owner": null,
+            "path": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1",
+            "recurse": false,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": null,
+            "state": "directory",
+            "unsafe_writes": false
+        }
+    },
+    "mode": "0755",
+    "owner": "jenkins",
+    "path": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1",
+    "secontext": "system_u:object_r:var_lib_t:s0",
+    "size": 6,
+    "state": "directory",
+    "uid": 992
+}
+
+TASK [terraform : Copy all terraform files into subfolder] *********************
+task path: /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/roles/terraform/tasks/main.yml:28
+<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: jenkins
+<127.0.0.1> EXEC /bin/sh -c 'echo ~jenkins && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /var/lib/jenkins/.ansible/tmp `"&& mkdir "` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820 `" && echo ansible-tmp-1773297727.6390767-2468-182853274808820="` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/stat.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmp8akqzawr TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/AnsiballZ_stat.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/AnsiballZ_stat.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/AnsiballZ_stat.py && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/stat.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmpnjs24x1o TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/AnsiballZ_stat.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/AnsiballZ_stat.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/AnsiballZ_stat.py && sleep 0'
+<127.0.0.1> PUT /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/main.tf TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/.source.tf
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/.source.tf && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/copy.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmp9qz1pa0a TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/AnsiballZ_copy.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/AnsiballZ_copy.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/AnsiballZ_copy.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item=/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/main.tf) => {
+    "ansible_loop_var": "item",
+    "changed": true,
+    "checksum": "5f345a4f94f73ea4d6ee6c46b6b30a10aec680c3",
+    "dest": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/main.tf",
+    "diff": [],
+    "gid": 991,
+    "group": "jenkins",
+    "invocation": {
+        "module_args": {
+            "_original_basename": "main.tf",
+            "attributes": null,
+            "backup": false,
+            "checksum": "5f345a4f94f73ea4d6ee6c46b6b30a10aec680c3",
+            "content": null,
+            "dest": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1",
+            "directory_mode": null,
+            "follow": false,
+            "force": true,
+            "group": null,
+            "local_follow": null,
+            "mode": null,
+            "owner": null,
+            "remote_src": false,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": "/var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/.source.tf",
+            "unsafe_writes": false,
+            "validate": null
+        }
+    },
+    "item": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/main.tf",
+    "md5sum": "6878ad79ce4202ee17b285cbaa8e82ad",
+    "mode": "0644",
+    "owner": "jenkins",
+    "secontext": "system_u:object_r:var_lib_t:s0",
+    "size": 227,
+    "src": "/var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297727.6390767-2468-182853274808820/.source.tf",
+    "state": "file",
+    "uid": 992
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~jenkins && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /var/lib/jenkins/.ansible/tmp `"&& mkdir "` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557 `" && echo ansible-tmp-1773297728.696434-2468-99877066922557="` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/stat.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmp_ba10jkz TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/AnsiballZ_stat.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/AnsiballZ_stat.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/AnsiballZ_stat.py && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/stat.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmpeon4irfi TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/AnsiballZ_stat.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/AnsiballZ_stat.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/AnsiballZ_stat.py && sleep 0'
+<127.0.0.1> PUT /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/variables.tf TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/.source.tf
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/.source.tf && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/copy.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmpnl7ghojt TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/AnsiballZ_copy.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/AnsiballZ_copy.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/AnsiballZ_copy.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item=/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/variables.tf) => {
+    "ansible_loop_var": "item",
+    "changed": true,
+    "checksum": "c7965aad31f77fd2a213b329fffe7cfb1d794b41",
+    "dest": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/variables.tf",
+    "diff": [],
+    "gid": 991,
+    "group": "jenkins",
+    "invocation": {
+        "module_args": {
+            "_original_basename": "variables.tf",
+            "attributes": null,
+            "backup": false,
+            "checksum": "c7965aad31f77fd2a213b329fffe7cfb1d794b41",
+            "content": null,
+            "dest": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1",
+            "directory_mode": null,
+            "follow": false,
+            "force": true,
+            "group": null,
+            "local_follow": null,
+            "mode": null,
+            "owner": null,
+            "remote_src": false,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": "/var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/.source.tf",
+            "unsafe_writes": false,
+            "validate": null
+        }
+    },
+    "item": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/variables.tf",
+    "md5sum": "65046c8498ab0e4a486767462ecaa7a3",
+    "mode": "0644",
+    "owner": "jenkins",
+    "secontext": "system_u:object_r:var_lib_t:s0",
+    "size": 650,
+    "src": "/var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297728.696434-2468-99877066922557/.source.tf",
+    "state": "file",
+    "uid": 992
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~jenkins && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /var/lib/jenkins/.ansible/tmp `"&& mkdir "` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170 `" && echo ansible-tmp-1773297729.5975258-2468-81785512059170="` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/stat.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmpwlxbnx3y TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/AnsiballZ_stat.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/AnsiballZ_stat.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/AnsiballZ_stat.py && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/stat.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmp2bfhk29m TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/AnsiballZ_stat.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/AnsiballZ_stat.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/AnsiballZ_stat.py && sleep 0'
+<127.0.0.1> PUT /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/common-provider.tf TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/.source.tf
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/.source.tf && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/copy.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmpvgnfq_1q TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/AnsiballZ_copy.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/AnsiballZ_copy.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/AnsiballZ_copy.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item=/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/common-provider.tf) => {
+    "ansible_loop_var": "item",
+    "changed": true,
+    "checksum": "a24d4e9a9a79b93129600e1037f8e76821e9802e",
+    "dest": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/common-provider.tf",
+    "diff": [],
+    "gid": 991,
+    "group": "jenkins",
+    "invocation": {
+        "module_args": {
+            "_original_basename": "common-provider.tf",
+            "attributes": null,
+            "backup": false,
+            "checksum": "a24d4e9a9a79b93129600e1037f8e76821e9802e",
+            "content": null,
+            "dest": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1",
+            "directory_mode": null,
+            "follow": false,
+            "force": true,
+            "group": null,
+            "local_follow": null,
+            "mode": null,
+            "owner": null,
+            "remote_src": false,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": "/var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/.source.tf",
+            "unsafe_writes": false,
+            "validate": null
+        }
+    },
+    "item": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/common-provider.tf",
+    "md5sum": "796fa68f86a45b28339afef5f99e2e3e",
+    "mode": "0644",
+    "owner": "jenkins",
+    "secontext": "system_u:object_r:var_lib_t:s0",
+    "size": 455,
+    "src": "/var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297729.5975258-2468-81785512059170/.source.tf",
+    "state": "file",
+    "uid": 992
+}
+<127.0.0.1> EXEC /bin/sh -c 'echo ~jenkins && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /var/lib/jenkins/.ansible/tmp `"&& mkdir "` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768 `" && echo ansible-tmp-1773297730.50878-2468-101177830819768="` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/stat.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmp40ejjbo9 TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/AnsiballZ_stat.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/AnsiballZ_stat.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/AnsiballZ_stat.py && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/stat.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmpo77t3mo8 TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/AnsiballZ_stat.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/AnsiballZ_stat.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/AnsiballZ_stat.py && sleep 0'
+<127.0.0.1> PUT /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/common-variables.tf TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/.source.tf
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/.source.tf && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/copy.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmp30fqflxy TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/AnsiballZ_copy.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/AnsiballZ_copy.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/AnsiballZ_copy.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => (item=/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/common-variables.tf) => {
+    "ansible_loop_var": "item",
+    "changed": true,
+    "checksum": "4e3f605dc38c6a41477dcfff33078bacf273fb04",
+    "dest": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/common-variables.tf",
+    "diff": [],
+    "gid": 991,
+    "group": "jenkins",
+    "invocation": {
+        "module_args": {
+            "_original_basename": "common-variables.tf",
+            "attributes": null,
+            "backup": false,
+            "checksum": "4e3f605dc38c6a41477dcfff33078bacf273fb04",
+            "content": null,
+            "dest": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1",
+            "directory_mode": null,
+            "follow": false,
+            "force": true,
+            "group": null,
+            "local_follow": null,
+            "mode": null,
+            "owner": null,
+            "remote_src": false,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": "/var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/.source.tf",
+            "unsafe_writes": false,
+            "validate": null
+        }
+    },
+    "item": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/common-variables.tf",
+    "md5sum": "9cb8bf84c10fe7b67b9ad71365bf3e33",
+    "mode": "0644",
+    "owner": "jenkins",
+    "secontext": "system_u:object_r:var_lib_t:s0",
+    "size": 135,
+    "src": "/var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297730.50878-2468-101177830819768/.source.tf",
+    "state": "file",
+    "uid": 992
+}
+
+TASK [terraform : modify the modules path] *************************************
+task path: /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/roles/terraform/tasks/main.yml:37
+<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: jenkins
+<127.0.0.1> EXEC /bin/sh -c 'echo ~jenkins && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /var/lib/jenkins/.ansible/tmp `"&& mkdir "` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297731.4386265-2575-203360409254845 `" && echo ansible-tmp-1773297731.4386265-2575-203360409254845="` echo /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297731.4386265-2575-203360409254845 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.12/site-packages/ansible/modules/replace.py
+<127.0.0.1> PUT /var/lib/jenkins/.ansible/tmp/ansible-local-2372eps_kotq/tmpwpmi92m8 TO /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297731.4386265-2575-203360409254845/AnsiballZ_replace.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+rwx /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297731.4386265-2575-203360409254845/ /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297731.4386265-2575-203360409254845/AnsiballZ_replace.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python3.12 /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297731.4386265-2575-203360409254845/AnsiballZ_replace.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /var/lib/jenkins/.ansible/tmp/ansible-tmp-1773297731.4386265-2575-203360409254845/ > /dev/null 2>&1 && sleep 0'
+[ERROR]: Task failed: Module failed: Path /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/modules.tf does not exist !
+Origin: /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/roles/terraform/tasks/main.yml:37:7
+
+35         - "{{build_workspace}}/terraform/components/{{resource_type}}/*.yml"
+36         
+37     - name: modify the modules path
+         ^ column 7
+
+failed: [localhost] (item={'from': '(source\\s+=\\s+")\\.\\.\\/\\.\\.\\/([^\\.]+\\>?[^\\.]*)(^)', 'to': '\\1../../../\\2'}) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "after": null,
+            "attributes": null,
+            "backup": false,
+            "before": null,
+            "encoding": "utf-8",
+            "group": null,
+            "mode": null,
+            "owner": null,
+            "path": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/modules.tf",
+            "regexp": "(source\\s+=\\s+\")\\.\\.\\/\\.\\.\\/([^\\.]+\\>?[^\\.]*)(^)",
+            "replace": "\\1../../../\\2",
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "unsafe_writes": false,
+            "validate": null
+        }
+    },
+    "item": {
+        "from": "(source\\s+=\\s+\")\\.\\.\\/\\.\\.\\/([^\\.]+\\>?[^\\.]*)(^)",
+        "to": "\\1../../../\\2"
+    },
+    "rc": 257
+}
+
+MSG:
+
+Path /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/modules.tf does not exist !
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=2    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] echo
+Error executing playbook: pb-gke_cluster.yml -> script returned exit code 2
+[Pipeline] error
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: Ansible Playbook Execution Failed
+Finished: FAILURE

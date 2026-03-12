@@ -1,0 +1,103 @@
+---
+
+- name: Define resource directory
+  set_fact:
+    resources_dir: "{{ build_workspace }}/terraform/components/{{ resource_type }}/{{ resource_name }}"
+
+- name: Set default terraform workspace
+  set_fact:
+    tf_workspace: "{{ tf_workspace | default('default') }}"
+
+###########################################################
+# Create Working Directory
+###########################################################
+
+- name: Prepare terraform working directory
+  block:
+
+    - name: Check if directory exists
+      stat:
+        path: "{{ resources_dir }}"
+      register: dir
+
+    - name: Remove directory if exists
+      file:
+        path: "{{ resources_dir }}"
+        state: absent
+      when: dir.stat.exists
+
+    - name: Create resource directory
+      file:
+        path: "{{ resources_dir }}"
+        state: directory
+        mode: "0755"
+
+###########################################################
+# Copy Terraform Component Files
+###########################################################
+
+    - name: Copy terraform component files
+      copy:
+        src: "{{ item }}"
+        dest: "{{ resources_dir }}/"
+      with_fileglob:
+        - "{{ build_workspace }}/terraform/components/{{ resource_type }}/*.tf"
+        - "{{ build_workspace }}/terraform/components/{{ resource_type }}/{{ global_tfvars }}"
+        - "{{ build_workspace }}/terraform/components/{{ resource_type }}/*.yml"
+
+###########################################################
+# FIX: Modify module paths safely
+###########################################################
+
+    - name: Find terraform files
+      find:
+        paths: "{{ resources_dir }}"
+        patterns: "*.tf"
+      register: tf_files
+
+    - name: Update module source paths
+      replace:
+        path: "{{ item.path }}"
+        regexp: '(source\s+=\s+")\.\.\/\.\.\/([^"]+)'
+        replace: '\1../../../\2'
+      loop: "{{ tf_files.files }}"
+      when: tf_files.matched > 0
+
+  when:
+    - resource_type != resource_name
+    - tf_action == "plan" or tf_action == "apply"
+
+###########################################################
+# Terraform state path
+###########################################################
+
+- name: Set terraform state path
+  set_fact:
+    iac_path: "/tf/{{ repo_name }}/{{ branch_name }}/{{ project_name }}/{{ resource_name }}/{{ global_tfvars }}"
+
+###########################################################
+# Optional compute image variable
+###########################################################
+
+- name: Set compute image variable
+  set_fact:
+    compute_image: "-var 'compute_image={{ compute_image }}'"
+  when:
+    - compute_image is defined
+    - compute_image | length > 0
+    - compute_image is not search("null")
+
+###########################################################
+# Terraform Init + Plan
+###########################################################
+
+- name: Run terraform init and plan
+  include_tasks: actions/init-plan.yml
+
+###########################################################
+# Terraform Apply / Destroy
+###########################################################
+
+- name: Run terraform apply or destroy
+  include_tasks: actions/apply-destroy.yml
+  when: tf_action == "apply" or tf_action == "destroy"

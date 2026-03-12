@@ -1,0 +1,783 @@
+Started by user Harish Shinde
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/caches/git-f3d5c9624992ed1a4a9024abdfe71894/.git # timeout=10
+Setting origin to https://github.com/opus-devops/opus-iac
+ > git config remote.origin.url https://github.com/opus-devops/opus-iac # timeout=10
+Fetching origin...
+Fetching upstream changes from origin
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git config --get remote.origin.url # timeout=10
+using GIT_ASKPASS to set credentials 
+ > git fetch --no-tags --force --progress -- origin +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/master
+Seen branch in repository origin/opus-0001
+Seen branch in repository origin/opus-002
+Seen branch in repository origin/opus-VaishLB
+Seen branch in repository origin/opus-ci
+Seen branch in repository origin/opus-ci_hs
+Seen branch in repository origin/opus-swetaDb
+Seen branch in repository origin/opus_ci_hs
+Seen 8 remote branches
+Obtained Jenkinsfile from 07bd3c8f011524e806c2a628e218d24dd476560f
+[Pipeline] Start of Pipeline
+[Pipeline] library
+Loading library IAC@jenkins_hs
+Attempting to resolve jenkins_hs from remote references...
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+using GIT_ASKPASS to set credentials 
+ > git ls-remote -h -- https://github.com/opus-devops/jenkins-groovy.git # timeout=10
+Found match: refs/heads/jenkins_hs revision e9a98ab4e66e389d622a2c2b6fe2761cdf8a0cb1
+The recommended git tool is: NONE
+using credential github_jenkins_token
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/IAC_opus-ci_hs@libs/27f69c3172db0b93e1cc227c51dcd7ddaea5e35162dbaae482529625c13d9b96/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/opus-devops/jenkins-groovy.git # timeout=10
+Fetching without tags
+Fetching upstream changes from https://github.com/opus-devops/jenkins-groovy.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+using GIT_ASKPASS to set credentials 
+ > git fetch --no-tags --force --progress -- https://github.com/opus-devops/jenkins-groovy.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision e9a98ab4e66e389d622a2c2b6fe2761cdf8a0cb1 (jenkins_hs)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f e9a98ab4e66e389d622a2c2b6fe2761cdf8a0cb1 # timeout=10
+Commit message: "Update executeAnsiblePlaybook.groovy"
+ > git rev-list --no-walk 03dca494fd864553b9ea5a66e7e69d382e29f6b1 # timeout=10
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/IAC_opus-ci_hs
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github_jenkins_token
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/IAC_opus-ci_hs/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/opus-devops/opus-iac # timeout=10
+Fetching without tags
+Fetching upstream changes from https://github.com/opus-devops/opus-iac
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+using GIT_ASKPASS to set credentials 
+ > git fetch --no-tags --force --progress -- https://github.com/opus-devops/opus-iac +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision 07bd3c8f011524e806c2a628e218d24dd476560f (opus-ci_hs)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 07bd3c8f011524e806c2a628e218d24dd476560f # timeout=10
+Commit message: "Update Jenkinsfile"
+ > git rev-list --no-walk 07bd3c8f011524e806c2a628e218d24dd476560f # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Initalize)
+[Pipeline] readJSON
+[Pipeline] properties
+[Pipeline] sh
++ rm -rf /var/lib/jenkins/workspace/IAC_opus-ci_hs/sshkey/known_hosts
+[Pipeline] sh
++ mkdir -p /var/lib/jenkins/workspace/IAC_opus-ci_hs/sshkey
++ chmod 700 /var/lib/jenkins/workspace/IAC_opus-ci_hs/sshkey
++ ssh-keygen -q -t rsa -N '' -f /var/lib/jenkins/workspace/IAC_opus-ci_hs/sshkey/ansible-ssh-tempkey -C jenkins
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/IAC_opus-ci_hs
+[Pipeline] {
+[Pipeline] echo
+Cleaning Workspace.. 
+[Pipeline] sh
++ rm -rf /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp /var/lib/jenkins/workspace/IAC_opus-ci_hs/logs /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform
+[Pipeline] echo
+Configuring Workspace.. 
+[Pipeline] sh
++ mkdir -p /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] withCredentials
+Masking supported pattern matches of $GIT_PASS
+[Pipeline] {
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ git ls-remote https://kiranpatil-opus:****@github.com/opus-devops/infra-codebase.git refs/heads/infra_codebase_hs
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ git clone --branch infra_codebase_hs --depth 1 https://kiranpatil-opus:****@github.com/opus-devops/infra-codebase.git .
+Cloning into '.'...
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] echo
+INFRASTRUCTURE_GIT_COMMIT: c7ba4dc6868899183d165eb5ca55be60815c2ed7
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/IAC_opus-ci_hs
+[Pipeline] {
+[Pipeline] sh
++ mkdir -p /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible
++ mkdir -p /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform
++ cp -r /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp/ansible/inventory /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/
++ cp -r /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp/ansible/roles /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/
++ cp -r /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp/ansible/playbooks/compute_linux.yml /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp/ansible/playbooks/pb-bucket.yml /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp/ansible/playbooks/pb-gke_cluster.yml /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/
++ cp -r /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp/terraform/components /var/lib/jenkins/workspace/IAC_opus-ci_hs/temp/terraform/modules /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform
+[Pipeline] sh
++ mkdir -p /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible
+[Pipeline] sh
++ mkdir -p /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/ssh
+[Pipeline] writeFile
+[Pipeline] sh
++ find /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/inventory -type f -name '*.gcp.yml' -exec sed -i 's/{{GCP_PROJECT}}/opus-devops-accelerator/g' '{}' ';'
++ find /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/inventory -type f -name '*.gcp.yml' -exec sed -i 's/{{IAC_ID}}/iac-opus-ci_hs/g' '{}' ';'
++ rm -f /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/inventory/group_vars/_compute_dynamic.yml
+[Pipeline] sh
+++ find /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components -mindepth 1 -maxdepth 1 -type d -not -name _common_tfvars
++ for dir in $(find ${WORKSPACE}/terraform/components -mindepth 1 -maxdepth 1 -type d -not -name "_common_tfvars")
++ echo '[INFO] Processing /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/bucket'
+[INFO] Processing /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/bucket
++ '[' -f /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/bucket/provider.tf ']'
++ echo '[INFO] provider.tf found → skipping commom-provider.tf'
+[INFO] provider.tf found → skipping commom-provider.tf
++ for tf in ${WORKSPACE}/terraform/components/_common_tfvars/*.tf
+++ basename /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-provider.tf
++ '[' common-provider.tf = commom-provider.tf ']'
++ cp /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-provider.tf /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/bucket/
++ for tf in ${WORKSPACE}/terraform/components/_common_tfvars/*.tf
+++ basename /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-variables.tf
++ '[' common-variables.tf = commom-provider.tf ']'
++ cp /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-variables.tf /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/bucket/
++ for dir in $(find ${WORKSPACE}/terraform/components -mindepth 1 -maxdepth 1 -type d -not -name "_common_tfvars")
++ echo '[INFO] Processing /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/compute_linux'
+[INFO] Processing /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/compute_linux
++ '[' -f /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/compute_linux/provider.tf ']'
++ echo '[INFO] No provider.tf found → copying all global tf files'
+[INFO] No provider.tf found → copying all global tf files
++ cp /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-provider.tf /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-variables.tf /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/compute_linux/
++ for dir in $(find ${WORKSPACE}/terraform/components -mindepth 1 -maxdepth 1 -type d -not -name "_common_tfvars")
++ echo '[INFO] Processing /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster'
+[INFO] Processing /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster
++ '[' -f /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/provider.tf ']'
++ echo '[INFO] No provider.tf found → copying all global tf files'
+[INFO] No provider.tf found → copying all global tf files
++ cp /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-provider.tf /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/_common_tfvars/common-variables.tf /var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] echo
+Starting provision action: 'plan_apply'
+[Pipeline] echo
+Steps to execute: plan -> apply
+[Pipeline] echo
+Running step: plan
+[Pipeline] stage
+[Pipeline] { (Resource Provision: plan)
+[Pipeline] echo
+Executing step: plan
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $GCP_SERVICE_ACCOUNT_FILE or $GOOGLE_APPLICATION_CREDENTIALS or $CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE
+[Pipeline] {
+[Pipeline] echo
+Executing playbook: pb-gke_cluster.yml
+[Pipeline] sh
++ ansible-playbook -v pb-gke_cluster.yml --extra-vars 'resource_name=opus-gkeus-central1 tf_action=plan build_workspace=/var/lib/jenkins/workspace/IAC_opus-ci_hs project=opus-devops-accelerator region=us-central1 compute_image=rocky-linux-10-v20250912 iac_id=iac-opus-ci_hs'
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+Using /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/ansible.cfg as config file
+
+PLAY [Playbook to handle GKE creation] *****************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Call Terraform Role] *****************************************************
+included: terraform for localhost
+
+TASK [terraform : Define resource directory] ***********************************
+ok: [localhost] => {
+    "ansible_facts": {
+        "resources_dir": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1"
+    },
+    "changed": false
+}
+
+TASK [terraform : Set default terraform workspace] *****************************
+ok: [localhost] => {
+    "ansible_facts": {
+        "tf_workspace": "default"
+    },
+    "changed": false
+}
+
+TASK [terraform : Check if directory exists] ***********************************
+ok: [localhost] => {
+    "changed": false,
+    "stat": {
+        "exists": false
+    }
+}
+
+TASK [terraform : Remove directory if exists] **********************************
+skipping: [localhost] => {
+    "changed": false,
+    "false_condition": "dir.stat.exists",
+    "skip_reason": "Conditional result was False"
+}
+
+TASK [terraform : Create resource directory] ***********************************
+changed: [localhost] => {
+    "changed": true,
+    "gid": 991,
+    "group": "jenkins",
+    "mode": "0755",
+    "owner": "jenkins",
+    "path": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1",
+    "secontext": "system_u:object_r:var_lib_t:s0",
+    "size": 6,
+    "state": "directory",
+    "uid": 992
+}
+
+TASK [terraform : Copy terraform component files] ******************************
+changed: [localhost] => (item=/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/main.tf) => {
+    "ansible_loop_var": "item",
+    "changed": true,
+    "checksum": "5f345a4f94f73ea4d6ee6c46b6b30a10aec680c3",
+    "dest": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/main.tf",
+    "gid": 991,
+    "group": "jenkins",
+    "item": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/main.tf",
+    "md5sum": "6878ad79ce4202ee17b285cbaa8e82ad",
+    "mode": "0644",
+    "owner": "jenkins",
+    "secontext": "system_u:object_r:var_lib_t:s0",
+    "size": 227,
+    "src": "/var/lib/jenkins/.ansible/tmp/ansible-tmp-1773301089.212235-3494-271185516963630/.source.tf",
+    "state": "file",
+    "uid": 992
+}
+changed: [localhost] => (item=/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/variables.tf) => {
+    "ansible_loop_var": "item",
+    "changed": true,
+    "checksum": "c7965aad31f77fd2a213b329fffe7cfb1d794b41",
+    "dest": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/variables.tf",
+    "gid": 991,
+    "group": "jenkins",
+    "item": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/variables.tf",
+    "md5sum": "65046c8498ab0e4a486767462ecaa7a3",
+    "mode": "0644",
+    "owner": "jenkins",
+    "secontext": "system_u:object_r:var_lib_t:s0",
+    "size": 650,
+    "src": "/var/lib/jenkins/.ansible/tmp/ansible-tmp-1773301089.990193-3494-101161757569276/.source.tf",
+    "state": "file",
+    "uid": 992
+}
+changed: [localhost] => (item=/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/common-provider.tf) => {
+    "ansible_loop_var": "item",
+    "changed": true,
+    "checksum": "a24d4e9a9a79b93129600e1037f8e76821e9802e",
+    "dest": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/common-provider.tf",
+    "gid": 991,
+    "group": "jenkins",
+    "item": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/common-provider.tf",
+    "md5sum": "796fa68f86a45b28339afef5f99e2e3e",
+    "mode": "0644",
+    "owner": "jenkins",
+    "secontext": "system_u:object_r:var_lib_t:s0",
+    "size": 455,
+    "src": "/var/lib/jenkins/.ansible/tmp/ansible-tmp-1773301090.6097784-3494-256424905486919/.source.tf",
+    "state": "file",
+    "uid": 992
+}
+changed: [localhost] => (item=/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/common-variables.tf) => {
+    "ansible_loop_var": "item",
+    "changed": true,
+    "checksum": "4e3f605dc38c6a41477dcfff33078bacf273fb04",
+    "dest": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/common-variables.tf",
+    "gid": 991,
+    "group": "jenkins",
+    "item": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/common-variables.tf",
+    "md5sum": "9cb8bf84c10fe7b67b9ad71365bf3e33",
+    "mode": "0644",
+    "owner": "jenkins",
+    "secontext": "system_u:object_r:var_lib_t:s0",
+    "size": 135,
+    "src": "/var/lib/jenkins/.ansible/tmp/ansible-tmp-1773301091.226748-3494-267471781053515/.source.tf",
+    "state": "file",
+    "uid": 992
+}
+
+TASK [terraform : Find terraform files] ****************************************
+ok: [localhost] => {
+    "changed": false,
+    "examined": 4,
+    "files": [
+        {
+            "atime": 1773301089.9361641,
+            "ctime": 1773301089.9421647,
+            "dev": 2050,
+            "gid": 991,
+            "gr_name": "jenkins",
+            "inode": 235179930,
+            "isblk": false,
+            "ischr": false,
+            "isdir": false,
+            "isfifo": false,
+            "isgid": false,
+            "islnk": false,
+            "isreg": true,
+            "issock": false,
+            "isuid": false,
+            "mode": "0644",
+            "mtime": 1773301089.5201254,
+            "nlink": 1,
+            "path": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/main.tf",
+            "pw_name": "jenkins",
+            "rgrp": true,
+            "roth": true,
+            "rusr": true,
+            "size": 227,
+            "uid": 992,
+            "wgrp": false,
+            "woth": false,
+            "wusr": true,
+            "xgrp": false,
+            "xoth": false,
+            "xusr": false
+        },
+        {
+            "atime": 1773301090.5562217,
+            "ctime": 1773301090.5632224,
+            "dev": 2050,
+            "gid": 991,
+            "gr_name": "jenkins",
+            "inode": 34336982,
+            "isblk": false,
+            "ischr": false,
+            "isdir": false,
+            "isfifo": false,
+            "isgid": false,
+            "islnk": false,
+            "isreg": true,
+            "issock": false,
+            "isuid": false,
+            "mode": "0644",
+            "mtime": 1773301090.2871966,
+            "nlink": 1,
+            "path": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/variables.tf",
+            "pw_name": "jenkins",
+            "rgrp": true,
+            "roth": true,
+            "rusr": true,
+            "size": 650,
+            "uid": 992,
+            "wgrp": false,
+            "woth": false,
+            "wusr": true,
+            "xgrp": false,
+            "xoth": false,
+            "xusr": false
+        },
+        {
+            "atime": 1773301091.1732788,
+            "ctime": 1773301091.1802795,
+            "dev": 2050,
+            "gid": 991,
+            "gr_name": "jenkins",
+            "inode": 84080612,
+            "isblk": false,
+            "ischr": false,
+            "isdir": false,
+            "isfifo": false,
+            "isgid": false,
+            "islnk": false,
+            "isreg": true,
+            "issock": false,
+            "isuid": false,
+            "mode": "0644",
+            "mtime": 1773301090.9012537,
+            "nlink": 1,
+            "path": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/common-provider.tf",
+            "pw_name": "jenkins",
+            "rgrp": true,
+            "roth": true,
+            "rusr": true,
+            "size": 455,
+            "uid": 992,
+            "wgrp": false,
+            "woth": false,
+            "wusr": true,
+            "xgrp": false,
+            "xoth": false,
+            "xusr": false
+        },
+        {
+            "atime": 1773301091.8033373,
+            "ctime": 1773301091.8093379,
+            "dev": 2050,
+            "gid": 991,
+            "gr_name": "jenkins",
+            "inode": 134369519,
+            "isblk": false,
+            "ischr": false,
+            "isdir": false,
+            "isfifo": false,
+            "isgid": false,
+            "islnk": false,
+            "isreg": true,
+            "issock": false,
+            "isuid": false,
+            "mode": "0644",
+            "mtime": 1773301091.5273118,
+            "nlink": 1,
+            "path": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/common-variables.tf",
+            "pw_name": "jenkins",
+            "rgrp": true,
+            "roth": true,
+            "rusr": true,
+            "size": 135,
+            "uid": 992,
+            "wgrp": false,
+            "woth": false,
+            "wusr": true,
+            "xgrp": false,
+            "xoth": false,
+            "xusr": false
+        }
+    ],
+    "matched": 4,
+    "skipped_paths": {}
+}
+
+MSG:
+
+All paths examined
+
+TASK [terraform : Update module source paths] **********************************
+changed: [localhost] => (item={'path': '/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/main.tf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 992, 'gid': 991, 'size': 227, 'inode': 235179930, 'dev': 2050, 'nlink': 1, 'atime': 1773301089.9361641, 'mtime': 1773301089.5201254, 'ctime': 1773301089.9421647, 'gr_name': 'jenkins', 'pw_name': 'jenkins', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False}) => {
+    "ansible_loop_var": "item",
+    "changed": true,
+    "item": {
+        "atime": 1773301089.9361641,
+        "ctime": 1773301089.9421647,
+        "dev": 2050,
+        "gid": 991,
+        "gr_name": "jenkins",
+        "inode": 235179930,
+        "isblk": false,
+        "ischr": false,
+        "isdir": false,
+        "isfifo": false,
+        "isgid": false,
+        "islnk": false,
+        "isreg": true,
+        "issock": false,
+        "isuid": false,
+        "mode": "0644",
+        "mtime": 1773301089.5201254,
+        "nlink": 1,
+        "path": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/main.tf",
+        "pw_name": "jenkins",
+        "rgrp": true,
+        "roth": true,
+        "rusr": true,
+        "size": 227,
+        "uid": 992,
+        "wgrp": false,
+        "woth": false,
+        "wusr": true,
+        "xgrp": false,
+        "xoth": false,
+        "xusr": false
+    },
+    "rc": 0
+}
+
+MSG:
+
+1 replacements made
+ok: [localhost] => (item={'path': '/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/variables.tf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 992, 'gid': 991, 'size': 650, 'inode': 34336982, 'dev': 2050, 'nlink': 1, 'atime': 1773301090.5562217, 'mtime': 1773301090.2871966, 'ctime': 1773301090.5632224, 'gr_name': 'jenkins', 'pw_name': 'jenkins', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False}) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "atime": 1773301090.5562217,
+        "ctime": 1773301090.5632224,
+        "dev": 2050,
+        "gid": 991,
+        "gr_name": "jenkins",
+        "inode": 34336982,
+        "isblk": false,
+        "ischr": false,
+        "isdir": false,
+        "isfifo": false,
+        "isgid": false,
+        "islnk": false,
+        "isreg": true,
+        "issock": false,
+        "isuid": false,
+        "mode": "0644",
+        "mtime": 1773301090.2871966,
+        "nlink": 1,
+        "path": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/variables.tf",
+        "pw_name": "jenkins",
+        "rgrp": true,
+        "roth": true,
+        "rusr": true,
+        "size": 650,
+        "uid": 992,
+        "wgrp": false,
+        "woth": false,
+        "wusr": true,
+        "xgrp": false,
+        "xoth": false,
+        "xusr": false
+    },
+    "rc": 0
+}
+ok: [localhost] => (item={'path': '/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/common-provider.tf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 992, 'gid': 991, 'size': 455, 'inode': 84080612, 'dev': 2050, 'nlink': 1, 'atime': 1773301091.1732788, 'mtime': 1773301090.9012537, 'ctime': 1773301091.1802795, 'gr_name': 'jenkins', 'pw_name': 'jenkins', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False}) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "atime": 1773301091.1732788,
+        "ctime": 1773301091.1802795,
+        "dev": 2050,
+        "gid": 991,
+        "gr_name": "jenkins",
+        "inode": 84080612,
+        "isblk": false,
+        "ischr": false,
+        "isdir": false,
+        "isfifo": false,
+        "isgid": false,
+        "islnk": false,
+        "isreg": true,
+        "issock": false,
+        "isuid": false,
+        "mode": "0644",
+        "mtime": 1773301090.9012537,
+        "nlink": 1,
+        "path": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/common-provider.tf",
+        "pw_name": "jenkins",
+        "rgrp": true,
+        "roth": true,
+        "rusr": true,
+        "size": 455,
+        "uid": 992,
+        "wgrp": false,
+        "woth": false,
+        "wusr": true,
+        "xgrp": false,
+        "xoth": false,
+        "xusr": false
+    },
+    "rc": 0
+}
+ok: [localhost] => (item={'path': '/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/common-variables.tf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 992, 'gid': 991, 'size': 135, 'inode': 134369519, 'dev': 2050, 'nlink': 1, 'atime': 1773301091.8033373, 'mtime': 1773301091.5273118, 'ctime': 1773301091.8093379, 'gr_name': 'jenkins', 'pw_name': 'jenkins', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False}) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "atime": 1773301091.8033373,
+        "ctime": 1773301091.8093379,
+        "dev": 2050,
+        "gid": 991,
+        "gr_name": "jenkins",
+        "inode": 134369519,
+        "isblk": false,
+        "ischr": false,
+        "isdir": false,
+        "isfifo": false,
+        "isgid": false,
+        "islnk": false,
+        "isreg": true,
+        "issock": false,
+        "isuid": false,
+        "mode": "0644",
+        "mtime": 1773301091.5273118,
+        "nlink": 1,
+        "path": "/var/lib/jenkins/workspace/IAC_opus-ci_hs/terraform/components/gke_cluster/opus-gkeus-central1/common-variables.tf",
+        "pw_name": "jenkins",
+        "rgrp": true,
+        "roth": true,
+        "rusr": true,
+        "size": 135,
+        "uid": 992,
+        "wgrp": false,
+        "woth": false,
+        "wusr": true,
+        "xgrp": false,
+        "xoth": false,
+        "xusr": false
+    },
+    "rc": 0
+}
+
+TASK [terraform : Set terraform state path] ************************************
+ok: [localhost] => {
+    "ansible_facts": {
+        "iac_path": "/tf/iac/opus-ci_hs/opus-devops-accelerator/opus-gkeus-central1/default.tfvars"
+    },
+    "changed": false
+}
+
+TASK [terraform : Set compute image variable] **********************************
+ok: [localhost] => {
+    "ansible_facts": {
+        "compute_image": "-var 'compute_image=rocky-linux-10-v20250912'"
+    },
+    "changed": false
+}
+
+TASK [terraform : Run terraform init and plan] *********************************
+included: /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/roles/terraform/tasks/actions/init-plan.yml for localhost
+
+TASK [terraform : Initilize Terraform] *****************************************
+[ERROR]: Task failed: Module failed: non-zero return code
+Origin: /var/lib/jenkins/workspace/IAC_opus-ci_hs/ansible/roles/terraform/tasks/actions/init-plan.yml:3:5
+
+1 ---
+2
+3   - name: Initilize Terraform
+      ^ column 5
+
+fatal: [localhost]: FAILED! => {
+    "changed": true,
+    "cmd": "terraform init -no-color -backend-config='bucket=tf-opus-devops-accelerator' -backend-config='prefix=/tf/iac/opus-ci_hs/opus-devops-accelerator/opus-gkeus-central1/default.tfvars'",
+    "delta": "0:00:01.306444",
+    "end": "2026-03-12 07:38:15.650969",
+    "rc": 1,
+    "start": "2026-03-12 07:38:14.344525"
+}
+
+STDOUT:
+
+Initializing the backend...
+
+Successfully configured the backend "gcs"! Terraform will automatically
+use this backend unless the backend configuration changes.
+Initializing modules...
+- gke_cluster in ../../../modules/gke_cluster
+
+
+STDERR:
+
+
+Error: Duplicate variable declaration
+
+  on variables.tf line 6:
+   6: variable "region" {
+
+A variable named "region" was already declared at common-variables.tf:2,1-18.
+Variable names must be unique within a module.
+
+Error: Missing required argument
+
+  on ../../../modules/gke_cluster/main.tf line 28:
+  28: module variables
+
+The argument "source" is required, but no definition was found.
+
+Error: Invalid block definition
+
+  on ../../../modules/gke_cluster/main.tf line 28:
+  28: module variables
+  29: variable "project_id" {}
+
+A block definition must have block content delimited by "{" and "}", starting
+on the same line as the block header.
+
+Error: Duplicate variable declaration
+
+  on ../../../modules/gke_cluster/variables.tf line 1:
+   1: variable "project_id" {}
+
+A variable named "project_id" was already declared at
+../../../modules/gke_cluster/main.tf:29,1-22. Variable names must be unique
+within a module.
+
+Error: Duplicate variable declaration
+
+  on ../../../modules/gke_cluster/variables.tf line 2:
+   2: variable "region" {}
+
+A variable named "region" was already declared at
+../../../modules/gke_cluster/main.tf:30,1-18. Variable names must be unique
+within a module.
+
+Error: Duplicate variable declaration
+
+  on ../../../modules/gke_cluster/variables.tf line 3:
+   3: variable "cluster_name" {}
+
+A variable named "cluster_name" was already declared at
+../../../modules/gke_cluster/main.tf:31,1-24. Variable names must be unique
+within a module.
+
+Error: Duplicate variable declaration
+
+  on ../../../modules/gke_cluster/variables.tf line 4:
+   4: variable "node_count" {}
+
+A variable named "node_count" was already declared at
+../../../modules/gke_cluster/main.tf:32,1-22. Variable names must be unique
+within a module.
+
+Error: Duplicate variable declaration
+
+  on ../../../modules/gke_cluster/variables.tf line 5:
+   5: variable "machine_type" {}
+
+A variable named "machine_type" was already declared at
+../../../modules/gke_cluster/main.tf:33,1-24. Variable names must be unique
+within a module.
+
+Error: Unsupported block type
+
+  on ../../../modules/gke_cluster/variables.tf line 6:
+   6: Why this matches your repo pattern
+
+Blocks of type "Why" are not expected here.
+
+Error: Invalid block definition
+
+  on ../../../modules/gke_cluster/variables.tf line 6:
+   6: Why this matches your repo pattern
+
+A block definition must have block content delimited by "{" and "}", starting
+on the same line as the block header.
+
+
+MSG:
+
+non-zero return code
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=12   changed=3    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] echo
+Error executing playbook: pb-gke_cluster.yml -> script returned exit code 2
+[Pipeline] error
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: Ansible Playbook Execution Failed
+Finished: FAILURE
